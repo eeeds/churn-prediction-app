@@ -2,3 +2,4 @@ pandas
 sklearn
 matplotlib
 seaborn 
+xgboost
