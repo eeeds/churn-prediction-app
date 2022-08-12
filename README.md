@@ -10,4 +10,4 @@ This project has been created to predict the churn of a customer and it's part o
 
 
 # Dataset
-[Dataset's link](https://www.kaggle.com/datasets/shubh0799/churn-modelling)
+[Dataset's link](https://www.kaggle.com/datasets/shivan118/churn-modeling-dataset)
