@@ -10,8 +10,13 @@ This project has been created to predict the churn of a customer and it's part o
   - [Create the enviroment](#create-the-enviroment)
   - [Activate the enviroment](#activate-the-enviroment)
   - [Install dependencies](#install-dependencies)
-- [Working on the project](#working-on-the-project)
-  - [Conclusions](#conclusions)
+- [Working on the notebook](#working-on-the-notebook)
+  - [Analysis conclusions](#analysis-conclusions)
+  - [Jupyter Notebook into python code](#jupyter-notebook-into-python-code)
+- [Flask Application](#flask-application)
+  - [Create the app](#create-the-app)
+  - [Run the app](#run-the-app)
+  - [Send a request](#send-a-request)
 # Tools
 -   [Python](https://www.python.org/)
 -   [Anaconda](https://www.anaconda.com/products/distribution)
@@ -35,10 +40,10 @@ conda activate churn-project
 ```
 pip install -r requirements.txt
 ```
-# Working on the project
+# Working on the notebook
 [Working on notebook: exploratory_analysis.ipynb](notebooks/exploratory_analysis.ipynb)
 Follow the notebook to see the results.
-## Conclusions
+## Analysis conclusions
 I tested three models:
 - Logistic Regression
 - Random Forest
@@ -54,3 +59,40 @@ I tested three models:
 | 1      | XGBoost             | 0.72      | 0.53   | 0.61     |
 
 **Random Forest** and **XGBoost** have performed better than **Logistic Regression** and they have the same f1-score.
+
+## Jupyter Notebook into python code 
+You can transform your notebook into python code by using the command:
+```
+jupyter nbconvert --to python exploratory_analysis.ipynb
+```
+# Flask Application
+Install Flask with the command:
+```
+pip install flask
+```
+## Create the app
+[Working on serve.py](serve.py)
+## Run the app
+```
+python serve.py
+```
+## Send a request
+I've created a simple script called `serve_test.py` that sends a request to the app and prints the response
+with this values:
+```
+REQUEST={
+  "CreditScore": 597,
+  "Geography": "Germany",
+  "Gender": "Female",
+  "Age": 35,
+  "Tenure": 8,
+  "Balance": 131101.04,
+  "NumOfProducts": 1,
+  "HasCrCard": 1,
+  "IsActiveMember": 1,
+  "EstimatedSalary": 192852.67,
+  "Exited": 0
+}
+
+URL='http://localhost:9696/predict'
+```
