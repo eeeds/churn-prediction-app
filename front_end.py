@@ -1,4 +1,5 @@
 import streamlit as st
+from PIL import  Image
 
 
 st.write("""
@@ -6,6 +7,8 @@ st.write("""
 This app predicts if a customer will leave the bank or not.
 """
 )
+image = Image.open('images/churn-fish.webp')
+st.image(image, caption='')
 
 gender = st.selectbox(
     'Gender',
