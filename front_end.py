@@ -110,7 +110,7 @@ pred = pipeline.predict_proba(customer)[0,1]
 pred = float(pred)
 col1_pred, col2_pred = st.columns(2)
 
-col1_pred.write("Probability of acceptance:")
+col1_pred.write("Probability of living the bank:")
 col2_pred.write(f"{pred*100:.2f}%")
 
 
