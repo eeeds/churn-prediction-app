@@ -13,9 +13,6 @@ from sklearn.pipeline import make_pipeline
 
 
 
-
-
-
 input_data = './datasets/Churn_Modelling.csv'
 output_model = './models/pipeline.bin'
 

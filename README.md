@@ -17,6 +17,10 @@ This project has been created to predict the churn of a customer and it's part o
   - [Create the app](#create-the-app)
   - [Run the app](#run-the-app)
   - [Send a request](#send-a-request)
+- [Front end](#front-end)
+  - [Install Streamlit](#install-streamlit)
+  - [Working on design](#working-on-design)
+  - [Run the app](#run-the-app-1)
 # Tools
 -   [Python](https://www.python.org/)
 -   [Anaconda](https://www.anaconda.com/products/distribution)
@@ -95,4 +99,18 @@ REQUEST={
 }
 
 URL='http://localhost:9696/predict'
+```
+
+# Front end
+I'm going to use a [Streamlit.io](https://streamlit.io/) front end for this project.
+
+## Install Streamlit
+```
+pip install streamlit
+```
+## Working on design
+Working on front in [Front End](front_end.py)
+## Run the app
+```
+streamlit run front_end.py
 ```
