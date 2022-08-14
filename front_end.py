@@ -1,12 +1,34 @@
+from contextlib import suppress
 import streamlit as st
 from PIL import  Image
-
+import pickle 
+import json 
 
 st.write("""
 # Churn-Prediction-App
 This app predicts if a customer will leave the bank or not.
 """
 )
+st.markdown("""
+<style>
+.big-font {
+    font-size:50px !important;
+}
+</style>
+""", unsafe_allow_html=True)
+
+@st.cache(suppress_st_warning=True, allow_output_mutation=True)
+def load_model():
+    model = 'models/pipeline.bin'
+
+    with open(model, 'rb') as f_in:
+        pipeline = pickle.load(f_in)
+
+    return pipeline
+
+pipeline = load_model()
+
+
 image = Image.open('images/churn-fish.webp')
 st.image(image, caption='')
 
@@ -73,9 +95,24 @@ is_active_member = st.selectbox(
 
 )
 
-# customer = {
-#     ''
-# }
+customer = {'CreditScore': float(credit_score),
+ 'Geography': str(geography),
+ 'Gender': str(gender),
+ 'Age': int(age),
+ 'Tenure': int(tenure),
+ 'Balance': float(balance),
+ 'NumOfProducts': int(num_of_products),
+ 'HasCrCard': str(has_cr_card)=='Yes',
+ 'IsActiveMember': str(is_active_member)=='Yes',
+ 'EstimatedSalary': float(estimated_salary),
+ }
+pred = pipeline.predict_proba(customer)[0,1]
+pred = float(pred)
+col1_pred, col2_pred = st.columns(2)
+
+col1_pred.write("Probability of acceptance:")
+col2_pred.write(f"{pred*100:.2f}%")
+
 
 st.write("""
 This project was done as a part of [the project-of-the-week 
