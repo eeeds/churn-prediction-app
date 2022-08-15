@@ -21,11 +21,17 @@ This project has been created to predict the churn of a customer and it's part o
   - [Install Streamlit](#install-streamlit)
   - [Working on design](#working-on-design)
   - [Run the app](#run-the-app-1)
+- [Dockerfile](#dockerfile)
+  - [Build the image](#build-the-image)
+  - [Run the image](#run-the-image)
 # Tools
 -   [Python](https://www.python.org/)
 -   [Anaconda](https://www.anaconda.com/products/distribution)
 -   [Pandas](https://pandas.pydata.org/)
 -   [Scikit-learn](https://scikit-learn.org/stable/)
+-   [Flask](https://flask.palletsprojects.com/en/2.2.x/)
+-   [Streamlit](https://streamlit.io/)
+-   [Docker](https://www.docker.com/)
 
 # Dataset
 [Dataset's link](https://www.kaggle.com/datasets/shivan118/churn-modeling-dataset)
@@ -113,4 +119,29 @@ Working on front in [Front End](front_end.py)
 ## Run the app
 ```
 streamlit run front_end.py
+```
+# Dockerfile
+```
+FROM  python:3.9.12
+LABEL Author, Esteban Encina
+
+WORKDIR /app
+COPY requirements.txt ./requirements.txt
+#---------------- Prepare the environment
+## Install dependencies
+RUN pip install -r requirements.txt
+## Expose the app
+EXPOSE 8501
+COPY . /app
+## Run the app
+ENTRYPOINT [ "streamlit" , "run"]
+CMD [ "app.py" ]
+```
+## Build the image
+```
+docker build -t churn-project .
+```
+## Run the image
+```
+docker run -p 8501:8501 churn-project
 ```
