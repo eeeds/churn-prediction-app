@@ -23,7 +23,8 @@ This project has been created to predict the churn of a customer and it's part o
   - [Run the app](#run-the-app-1)
 - [Dockerfile](#dockerfile)
   - [Build the image](#build-the-image)
-  - [Run the image](#run-the-image)
+  - [Run the container](#run-the-container)
+- [Cloud](#cloud)
 # Tools
 -   [Python](https://www.python.org/)
 -   [Anaconda](https://www.anaconda.com/products/distribution)
@@ -127,10 +128,9 @@ LABEL Author, Esteban Encina
 
 WORKDIR /app
 COPY requirements.txt ./requirements.txt
-#---------------- Prepare the environment
 ## Install dependencies
 RUN pip install -r requirements.txt
-## Expose the app
+## Expose the port
 EXPOSE 8501
 COPY . /app
 ## Run the app
@@ -141,7 +141,9 @@ CMD [ "app.py" ]
 ```
 docker build -t churn-project .
 ```
-## Run the image
+## Run the container
 ```
 docker run -p 8501:8501 churn-project
 ```
+# Cloud
+The application is deployed in [Streamlit cloud](https://eeeds-churn-prediction-app-front-end-hxa1s8.streamlitapp.com/).
