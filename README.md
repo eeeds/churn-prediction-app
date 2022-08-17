@@ -25,6 +25,9 @@ This project has been created to predict the churn of a customer and it's part o
   - [Build the image](#build-the-image)
   - [Run the container](#run-the-container)
 - [Cloud](#cloud)
+- [After Course](#after-course)
+  - [Trying Gradio](#trying-gradio)
+  - [Run the app](#run-the-app-2)
 # Tools
 -   [Python](https://www.python.org/)
 -   [Anaconda](https://www.anaconda.com/products/distribution)
@@ -147,3 +150,16 @@ docker run -p 8501:8501 churn-project
 ```
 # Cloud
 The application is deployed in [Streamlit cloud](https://eeeds-churn-prediction-app-front-end-hxa1s8.streamlitapp.com/).
+
+# After Course
+## Trying [Gradio](https://gradio.app/getting_started/)
+Install gradio with the following command:
+```
+pip install gradio
+```
+I'll work with the file [front_end_alternative.py](front_end_alternative.py)
+## Run the app
+Run the app with the command:
+```
+python front_end_alternative.py
+```
